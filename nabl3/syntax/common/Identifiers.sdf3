@@ -1,0 +1,30 @@
+module common/Identifiers
+
+sorts
+
+  Id
+
+lexical syntax
+
+  Id = [a-zA-Z\_] [a-zA-Z0-9\'\-\_]*
+
+lexical restrictions
+
+  Id -/- [a-zA-Z0-9\'\_\*]
+  Id -/- [\-].~[\>]
+
+lexical syntax
+
+  Id = "_" {reject}
+  Id = "'" {reject}
+  Id = Keyword {reject}
+
+sorts
+
+  Keyword
+
+lexical syntax
+
+  Keyword = "module" 
+  Keyword = "rules" 
+  Keyword = [a-zA-Z0-9\'\-\_]* [\_]+

@@ -1,0 +1,31 @@
+module terms/Terms
+
+imports 
+
+  common/Identifiers
+  terms/Vars
+
+sorts
+
+  Pattern
+  Term
+  Name
+  Scope
+  ScopeRef
+
+context-free syntax
+
+  Pattern = <<Var>>  
+  Pattern.Op = <<Id>(<{Pattern ", "}*>)>
+  
+  Term = <<VarRef>>  
+  Term.Op = <<Id>(<{Term ", "}*>)>
+
+  Name.Name = <<Id>>
+
+  Scope.Scope = <<Id>>
+
+  ScopeRef.ScopeRef = <<Id>>
+  
+  Type.Type = <<Id>>
+  

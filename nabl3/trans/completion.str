@@ -1,0 +1,11 @@
+module completion
+
+imports
+  
+  runtime/completion/-
+  completion/nabl3-cp
+  pp
+  
+rules
+  
+  pp-completion = pp-partial-nabl3-string

@@ -1,0 +1,11 @@
+module rule
+
+language nabl3
+start symbol Start
+
+test empty name binding file [[
+]] parse succeeds
+
+test single rule [[
+x ' s : t 
+]] parse succeeds

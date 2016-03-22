@@ -1,0 +1,27 @@
+module rules/core/Constraints
+
+imports
+
+  common/Identifiers
+  terms/Terms
+  
+context-free syntax
+
+  Constraint.Ref =
+    <<Name> -\> <Name>>
+  
+  Constraint.Dec =
+    <<Name> -\> <Name>>
+  
+  Constraint.Res =
+    <<Name> |-\> <Name>>
+  
+  Constraint.Par =
+    <<ScopeRef> -P-\> <ScopeRef>>
+  
+  Constraint.TypeOf =
+    <<Term> : <Type>>
+  
+  Constraint.Eval =
+    <<Term> ' <Term> : <Term>>
+  

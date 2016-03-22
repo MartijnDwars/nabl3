@@ -1,0 +1,26 @@
+module nabl3.main
+
+imports
+
+  Colorer
+  Menus
+  Syntax
+  Views
+
+language
+  
+  name : nabl3
+  
+  extensions : nab3
+
+  table         : include/nabl3.tbl
+  start symbols : Start
+  
+  provider : include/nabl3.ctree
+  provider : include/nabl3-java.jar
+  observer : editor-analyze (multifile)
+  
+references
+
+  reference _ : editor-resolve
+  hover _     : editor-hover

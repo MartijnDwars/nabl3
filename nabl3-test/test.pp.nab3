@@ -1,0 +1,4 @@
+Int ( n ) ' s : IntType ( ) VarRef ( x ) ' s : t where x -> s x |-> y y : t ArithOp ( e1 , e2 ) ' s
+: IntType ( ) where e1 ' s : IntType ( ) e2 ' s : IntType ( ) Fun ( x , t , e ) ' s2 : FunType ( t1
+, t2 ) where s1 -P-> s2 s1 -> x x : t e ' s : t2 App ( e1 , e2 ) ' s : t where e1 ' s : FunType ( t1
+, t2 ) e2 ' s : t1

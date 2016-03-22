@@ -1,0 +1,10 @@
+module Colorer
+
+imports 
+
+  editor/Colorer.generated
+  completion/colorer/nabl3-cc-esv
+
+colorer
+
+  

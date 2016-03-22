@@ -1,0 +1,28 @@
+module rules/core/Rules
+
+imports
+
+  common/Identifiers
+  terms/Terms
+  rules/core/Constraints
+    
+context-free syntax
+
+  ModuleSection.Rules = <
+    rules
+
+    <Rule*>
+  > {longest-match}
+
+  Rule.Rule = <
+    <Pattern> ' <Scope> : <Term> <Context>
+    <Constraints>>
+  
+  Context = {ast("[]")}
+  Context = <in <{Id ", "}+>>
+
+  Constraints = {ast("[]")}
+  Constraints = <
+    where 
+      <{Constraint ",\n"}+>
+    >

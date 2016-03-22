@@ -1,0 +1,28 @@
+module names
+
+namespaces
+
+  Name Scope Var
+  
+binding rules
+  
+  Rule(_, _, _, _, _):
+    scopes Var, Scope, Name
+  
+  Var(name):
+    defines Var name
+  
+  Scope(name):
+    defines Scope name
+    
+  ScopeRef(name):
+    refers to Scope name
+  
+  Name(name):
+    refers to Var name
+    otherwise refers to Scope name
+  
+  VarRef(name):
+    refers to Var name
+    otherwise refers to Scope name
+  

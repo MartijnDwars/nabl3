@@ -1,0 +1,15 @@
+module nabl3
+
+imports
+  
+  Common
+  common/Modules
+  rules/core/Rules
+
+context-free start-symbols
+  
+  Start
+
+context-free syntax
+
+  Start = Module
