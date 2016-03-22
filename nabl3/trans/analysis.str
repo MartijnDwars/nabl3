@@ -13,14 +13,17 @@ imports
   runtime/editor/-
   
   pp
+  
+  desugar
 
 rules // Analysis
 
-  editor-analyze = analyze-all(id, id, id|<language>)
+  editor-analyze = analyze-all(desugar-all, id, id|<language>)
 
 rules // NaBL
   
   nabl-check-disable-unresolved = id
+  nabl-check-disable-duplicate(|uri, ns) = id
 
 rules // Editor services
 

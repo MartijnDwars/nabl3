@@ -27,5 +27,6 @@ context-free syntax
 
   ScopeRef.ScopeRef = <<Id>>
   
-  Type.Type = <<Id>>
+  Type.TypeVar = <<Id>>
+  Type.CompositeType = <<Id>(<{Type ", "}*>)>
   

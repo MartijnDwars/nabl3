@@ -6,7 +6,7 @@ namespaces
   
 binding rules
   
-  Rule(_, _, _, _, _):
+  Rule(_, _):
     scopes Var, Scope, Name
   
   Var(name):

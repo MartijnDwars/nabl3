@@ -8,10 +8,10 @@ imports
 context-free syntax
 
   Constraint.Ref =
-    <<Name> -\> <Name>>
+    <<Name> -\> <Scope>>
   
   Constraint.Dec =
-    <<Name> -\> <Name>>
+    <<Name> \<- <Scope>>
   
   Constraint.Res =
     <<Name> |-\> <Name>>
@@ -23,5 +23,5 @@ context-free syntax
     <<Term> : <Type>>
   
   Constraint.Eval =
-    <<Term> ' <Term> : <Term>>
+    <<Term> ' <Scope> : <Type>>
   

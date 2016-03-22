@@ -1,0 +1,31 @@
+module desugar
+
+imports
+
+  include/nabl3
+
+signature
+
+  constructors
+  
+    Sort : String * Scope * Type -> Sort
+    
+strategies
+
+  desugar-all = topdown(try(desugar))
+
+rules
+  
+  desugar:
+    Rule(Definition(pattern, scope, type, x), constraints) -> Rule(Definition(pattern', scope, type, x), constraints')
+  where
+    evals        := <collect(?Eval(_, _, _))> constraints
+  ; pattern'     := <innermost(var2val(|evals))> pattern
+  ; constraints' := <filter(not(?Eval(_, _, _)))> constraints
+  
+  var2val(|evals) =
+    ?Var(name); get(|evals, name)
+  
+  get(|evals, name) =
+    <fetch-elem(?Eval(VarRef(name), scope, type)); !Sort("e", scope, type)> evals
+    

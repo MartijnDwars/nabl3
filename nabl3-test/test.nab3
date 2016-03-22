@@ -4,9 +4,9 @@ imports
 
 rules
 
-  Int(_) ' s : IntType()
+  Int(/*n*/) ' s : IntType()
   
-  VarRef(x) ' s : t
+  VarRef(/*x*/) ' s : t
   where
     x -> s,
     x |-> y,
@@ -17,14 +17,14 @@ rules
     e1 ' s : IntType(),
     e2 ' s : IntType()
   
-  Fun(x, t, e) ' s2 : FunType(t1, t2)
+  Fun(/*x, t,*/ e) ' s2 : FunType(t1, t2)
   where
     s1 -P-> s2,
-    s1 -> x,
-    x : t,
+    s1 <- x,
+    x : t1,
     e ' s1 : t2
   
-  App(e1, e2) ' s : t
+  App(e1, e2) ' s : t2
   where
     e1 ' s : FunType(t1, t2),
     e2 ' s : t1

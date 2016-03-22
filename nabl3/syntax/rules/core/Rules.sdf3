@@ -15,8 +15,12 @@ context-free syntax
   > {longest-match}
 
   Rule.Rule = <
-    <Pattern> ' <Scope> : <Term> <Context>
+    <Definition>
     <Constraints>>
+  
+  Definition.Definition = <
+    <Pattern> ' <Scope> : <Type> <Context>
+    >
   
   Context = {ast("[]")}
   Context = <in <{Id ", "}+>>

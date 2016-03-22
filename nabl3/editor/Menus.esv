@@ -6,6 +6,7 @@ menus
     
     action: "Format"                 = editor-format (source)
     action: "Show abstract syntax"   = debug-show-aterm (source)
+    action: "Show desugared syntax"  = debug-show-desugared (source)
     action: "Show analyzed syntax"   = debug-show-analyzed
     
   menu: "Analysis"
