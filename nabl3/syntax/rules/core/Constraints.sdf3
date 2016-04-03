@@ -8,10 +8,10 @@ imports
 context-free syntax
 
   Constraint.Ref =
-    <<Name> -\> <Scope>>
+    <<Name> -\> <ScopeRef>>
   
   Constraint.Dec =
-    <<Name> \<- <Scope>>
+    <<Name> \<- <ScopeRef>>
   
   Constraint.Res =
     <<Name> |-\> <Name>>
@@ -19,6 +19,15 @@ context-free syntax
   Constraint.Par =
     <<ScopeRef> -P-\> <ScopeRef>>
   
+  Constraint.AssocFact =
+    <<Name> ~\> <ScopeRef>>
+  
+  Constraint.AssocConstraint =
+    <<Name> ~~\> <ScopeVar>>
+  
+  Constraint.Import =
+    <<ScopeRef> -|\> <ScopeVar>>
+    
   Constraint.TypeOf =
     <<Term> : <Type>>
   

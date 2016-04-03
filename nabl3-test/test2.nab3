@@ -1,0 +1,136 @@
+module test
+
+imports
+
+rules
+
+  MainClass(x, _, _) ' s : t
+  where
+    x <- s,
+    x : ClassType(x)
+
+  Class(x, _, fs, ms) ' s1 : t
+  where
+    x <- s1,
+    x : ClassType(x),
+    s2 -P-> s1,
+    x ~> s2,
+    fs ' s1 : t,
+    ms ' s1 : t
+  
+  Parent(x) ' s : t
+  where
+    x -> s,
+    x |-> y,
+    y : ClassType(x)
+  
+  Method(_, x, _, vs, _, _) ' s : t
+  where
+    x <- s,
+    s2 -P-> s,
+    vs ' s2 : t2
+  
+  ClassType(x) ' s : t
+  where
+    x -> s,
+    x |-> y,
+    y : ClassType(x)
+    
+  Var(t, x) ' s : t1
+  where
+    x <- s,
+    x : ty,
+    t ' s : ty
+  
+  // Stmt
+  Print(e) ' s : t
+  where
+    e ' s : IntType()
+  
+  While(cond, stmt) ' s : t
+  where
+    cond ' s : BoolType(),
+    stmt ' s : t2
+  
+  If(cond, stmt1, stmt2) ' s : t
+  where
+    s2 -P-> s,
+    s3 -P-> s,
+    cond ' s : BoolType(),
+    stmt1 ' s2 : t2,
+    stmt2 ' s3 : t3
+  
+  Subscript(e, i) ' s : IntType()
+  where
+    e ' s : IntArrayType(),
+    i ' s : IntType()
+    
+  // Exp
+  True() ' s : BoolType()
+  
+  False() ' s : BoolType()
+  
+  IntValue(n) ' s : IntType()
+  
+  Not(e) ' s : BoolType()
+  where
+    e ' s : BoolType()
+  
+  Add(e1, e2) ' s : IntType()
+  where
+    e1 ' s : IntType(),
+    e2 ' s : IntType()
+
+  Sub(e1, e2) ' s : IntType()
+  where
+    e1 ' s : IntType(),
+    e2 ' s : IntType()
+    
+  Mul(e1, e2) ' s : IntType()
+  where
+    e1 ' s : IntType(),
+    e2 ' s : IntType()
+
+  Lt(e1, e2) ' s : BoolType()
+  where
+    e1 ' s : IntType(),
+    e2 ' s : IntType()
+
+  And(e1, e2) ' s : BoolType()
+  where
+    e1 ' s : BoolType(),
+    e2 ' s : BoolType()
+  
+  VarRef(x) ' s : t
+  where
+    x -> s,
+    x |-> y,
+    y : t
+  
+  Length(e) ' s : IntType()
+  where
+    e ' s : IntArrayType()
+    
+  NewArray(e) ' s : IntArrayType()
+  where
+    e ' s : IntType()
+
+  NewObject(x) ' s : ClassType(x)
+  where
+    x -> s,
+    x |-> y,
+    y : ClassType(x)
+  
+  
+  
+  // TODO..
+  This() ' s : ClassType()
+  
+  // TODO, this requires imports
+  Call(e, x, _) ' s : t
+  where
+    x -> s2,
+    s2 -|> si1,
+    e ' s : ClassType(y),
+    y ~~> si1
+  
